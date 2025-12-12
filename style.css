@@ -101,7 +101,7 @@ nav ul li a:hover {
 
 #value-prop ul {
     list-style: disc;
-    text-align: left;
+    text-align: center;
     padding-left: 40px;
     margin-top: 20px;
 }
@@ -255,17 +255,6 @@ form button {
 
 form button:hover {
     background-color: #0056b3;
-}
-
-/* Align bullets to the left in service cards */
-.service-cards .card ul {
-    list-style: disc;
-    text-align: left; /* Align bullets and text to left */
-    padding-left: 20px; /* Add some space from card edge */
-}
-
-.service-cards .card ul li {
-    margin-bottom: 8px; /* Space between list items */
 }
 
 /* --- Footer --- */
