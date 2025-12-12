@@ -257,6 +257,17 @@ form button:hover {
     background-color: #0056b3;
 }
 
+/* Align bullets to the left in service cards */
+.service-cards .card ul {
+    list-style: disc;
+    text-align: left; /* Align bullets and text to left */
+    padding-left: 20px; /* Add some space from card edge */
+}
+
+.service-cards .card ul li {
+    margin-bottom: 8px; /* Space between list items */
+}
+
 /* --- Footer --- */
 footer {
     text-align: center;
