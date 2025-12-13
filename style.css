@@ -28,8 +28,10 @@ nav {
     z-index: 1000;
 }
 
-nav .logo {
-    height: 50px; /* adjust as needed */
+.nav-logo {
+    height: 1em;
+    width: auto;
+    vertical-align: middle;
 }
 
 nav ul {
