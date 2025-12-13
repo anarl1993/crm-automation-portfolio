@@ -15,29 +15,35 @@ p, li {
     font-weight: 400;
 }
 
-/* --- Navbar --- */
-nav {
+/* NAVBAR CONTAINER */
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem 2rem;
 }
 
+/* BRAND (logo + text) */
 .brand {
     display: flex;
     align-items: center;
     gap: 0.6rem;
 }
 
-.nav-logo {
-    height: 1.2em; /* slightly larger than text */
-    width: auto;
+/* NAV LINKS RESET */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;          /* spacing between buttons */
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.brand-text {
-    font-size: 1.1rem;          /* slightly bigger */
-    font-weight: 600;           /* professional, not heavy */
-    font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
-    letter-spacing: 0.3px;      /* subtle polish */
+/* LINKS */
+.nav-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 /* --- Hero Section --- */
