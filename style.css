@@ -178,18 +178,14 @@ p, li {
 }
 
 /* --- Why Choose Us Section --- */
-.features-list {
-    list-style: none;
+.features-list.centered li {
+    text-align: center;
     padding-left: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem 2rem;
 }
 
-.features-list li {
-    position: relative;
-    padding-left: 1.8rem;
-    line-height: 1.5;
+.features-list.centered li::before {
+    position: static;
+    margin-right: 0.5rem;
 }
 
 /* Check icon */
