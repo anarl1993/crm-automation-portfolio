@@ -15,7 +15,7 @@
 
 body {
     font-family: var(--font-family);
-    line-height: 1.6;
+    line-height: 1.4; /* Adjusted for tighter spacing */
     color: var(--text-color);
     background-color: #fff;
 }
