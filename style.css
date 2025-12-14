@@ -318,3 +318,14 @@ footer {
     margin-top: 50px;
     box-shadow: 0 -4px 8px rgba(0,0,0,0.05);
 }
+
+nav ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+}
+
+nav ul li {
+    margin: 0;
+}
