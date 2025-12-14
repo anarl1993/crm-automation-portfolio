@@ -35,7 +35,9 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 2rem; /* FINAL REDUCTION FOR MAIN HEADLINE */
+    font-size: 2rem; /* Reduced size for fit */
+    line-height: 1.2; /* Ensures clear separation between the two lines */
+    /* white-space property removed to ensure text does not overflow */
 }
 
 h2 {
@@ -74,8 +76,8 @@ h2 {
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
+list-style: none;
+display: flex;
 }
 
 .nav-links li a {
@@ -346,7 +348,7 @@ footer {
 /* 13. Media Queries for Responsiveness */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem; /* Ensure H1 is small enough on tablets/phones */
+        font-size: 2rem; 
     }
     
     .navbar {
