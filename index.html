@@ -119,18 +119,60 @@
 </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <input type="text" placeholder="Business Type">
-            <textarea placeholder="Your Message"></textarea>
-            <div class="form-button">
-                <button type="submit">Send Message</button>
-            </div>
-        </form>
-    </section>
+<section id="contact">
+    <h2>Get in Touch</h2>
+    <form id="contact-form">
+        <input type="text" name="from_name" placeholder="Your Name" required>
+        <input type="email" name="from_email" placeholder="Your Email" required>
+        <input type="text" name="business_type" placeholder="Business Type">
+        <textarea name="message" placeholder="Your Message"></textarea>
+        <div class="form-button">
+            <button type="submit">Send Message</button>
+        </div>
+    </form>
+</section>
+
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init('eW0PoWPPYxr9tbTQX'); // Your Public Key
+    })();
+
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const form = this;
+
+        // Send email to admin
+        emailjs.send('service_1fkdexn', 'template_merwo89', {
+            from_name: form.from_name.value,
+            from_email: form.from_email.value,
+            business_type: form.business_type.value,
+            message: form.message.value
+        })
+        .then(function(response) {
+            console.log("Message sent to admin:", response);
+
+            // Send auto-reply to the user
+            emailjs.send('service_1fkdexn', 'template_ogpmepg', {
+                to_name: form.from_name.value,
+                to_email: form.from_email.value
+            })
+            .then(function(resp){
+                console.log("Confirmation email sent to user:", resp);
+            }, function(err){
+                console.error("Failed to send confirmation email:", err);
+            });
+
+            alert("Thank you! Your message has been sent ✅");
+            form.reset();
+        }, function(error) {
+            console.error("Failed to send message:", error);
+            alert("Oops! Something went wrong ❌ Please try again.");
+        });
+    });
+</script>
 
     <!-- Footer -->
     <footer>
