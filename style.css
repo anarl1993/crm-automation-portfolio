@@ -28,7 +28,7 @@ p, li {
 /* Brand container (logo + text) */
 .brand {
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: 0.6rem;
 }
 
