@@ -15,56 +15,58 @@ p, li {
     font-weight: 400;
 }
 
-/* Navbar */
-nav {
+/* Navbar container */
+.navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* left and right items */
     align-items: center;
-    height: 64px;              /* controls navbar height */
+    height: 64px;                   /* fixed navbar height */
     padding: 0 2rem;
+    background-color: #fff;          /* optional, for visibility */
 }
 
-/* Brand container */
+/* Brand container (logo + text) */
 .brand {
     display: flex;
     align-items: center;
     gap: 0.6rem;
 }
 
-/* Logo fits navbar height */
+/* Logo sizing */
 .nav-logo {
-    max-height: 100%;          /* never exceed navbar height */
-    height: 36px;              /* safe, clean size */
+    max-height: 100%;
+    height: 36px;           /* fits navbar height */
     width: auto;
     object-fit: contain;
 }
 
-/* Brand text */
+/* Brand text styling */
 .brand-text {
     font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-size: 1.05rem;
     font-weight: 600;
     white-space: nowrap;
+    color: #000;
 }
 
-/* Base nav link style */
+/* Nav links container */
+.nav-links {
+    list-style: none;        /* remove bullets */
+    padding: 0;
+    margin: 0;
+    display: flex;           /* horizontal layout */
+    align-items: center;
+    gap: 1.75rem;            /* space between links */
+    margin-left: auto;       /* push links to the right */
+}
+
+/* Individual links */
 .nav-links li a {
     font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-size: 1rem;
     font-weight: 500;
     color: #000;              /* default black */
-    text-decoration: none;   /* no underline */
-}
-
-/* Reset nav list */
-.nav-links {
-    list-style: none;      /* removes bullets */
-    padding: 0;            /* removes left indent */
-    margin: 0;             /* removes default spacing */
-    display: flex;         /* puts links in a row */
-    align-items: center;
-    gap: 1.75rem;
-    margin-left: auto;     /* pushes links to the right */
+    text-decoration: none;    /* remove underline */
 }
 
 /* Visited links */
@@ -72,9 +74,9 @@ nav {
     color: #2563eb;           /* professional blue */
 }
 
-/* Hover state */
+/* Hover effect */
 .nav-links li a:hover {
-    color: #2563eb;
+    color: #2563eb;           /* soft blue hover */
     text-decoration: none;
 }
 
