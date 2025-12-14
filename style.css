@@ -55,7 +55,7 @@ p, li {
     padding: 0;
     margin: 0;
     display: flex;           /* horizontal layout */
-    align-items: center;
+    align-items: right;
     gap: 1.75rem;            /* space between links */
     margin-left: auto;       /* push links to the right */
 }
