@@ -1,133 +1,100 @@
-/* 1. Global Styles and Reset */
-:root {
-    --primary-color: #0062ff; /* Slightly more vibrant blue */
-    --primary-hover: #004dc9;
-    --secondary-color: #f8faff;
-    --text-color: #4a5568; /* Softer gray for better readability */
-    --heading-color: #1a202c; /* Darker, more professional slate */
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --wa-green: #25d366;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-    --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.1);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
+/* Basic Reset and Layout */
 body {
-    font-family: var(--font-family);
-    line-height: 1.6; /* Increased for better flow */
-    color: var(--text-color);
-    background-color: #fff;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+}
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
 }
 
-.container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 40px 0; }
-
-/* 2. Typography */
-h1, h2, h3 { color: var(--heading-color); line-height: 1.25; font-weight: 800; letter-spacing: -0.025em; }
-h1 { font-size: 3rem; margin-bottom: 1rem; }
-h2 { font-size: 2.25rem; text-align: center; margin-bottom: 2rem; }
-
-/* 3. Navigation */
+/* Navbar */
 .navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1rem 8%; background-color: rgba(255, 255, 255, 0.95); 
-    backdrop-filter: blur(10px); /* Modern frosted glass effect */
-    position: sticky; top: 0; z-index: 1000;
-    border-bottom: 1px solid #edf2f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-.brand { display: flex; align-items: center; gap: 12px; }
-.nav-logo { height: 42px; width: auto; }
-.brand-text { font-size: 1.25rem; font-weight: 800; color: var(--primary-color); }
+.nav-logo { height: 40px; margin-right: 10px; }
+.nav-links { list-style: none; display: flex; }
+.nav-links li { margin-left: 20px; }
+.nav-links a { text-decoration: none; color: #333; font-weight: 600; }
 
-.nav-links { list-style: none; display: flex; gap: 10px; }
-.nav-links li a { 
-    text-decoration: none; color: var(--text-color); 
-    padding: 8px 16px; font-weight: 500; border-radius: 6px;
-    transition: var(--transition);
+/* Hero Section */
+.hero {
+    background: #f4f7f6;
+    padding: 100px 20px;
+    text-align: center;
 }
-.nav-links li a:hover { background-color: var(--secondary-color); color: var(--primary-color); }
-
-/* 4. Hero Section */
-.hero { 
-    background: radial-gradient(circle at top right, #e9f9ff, #ffffff); 
-    padding: 120px 5%; text-align: center; 
-}
-.hero p { font-size: 1.25rem; max-width: 700px; margin: 20px auto 40px; color: #718096; }
-
-/* 5. Buttons */
+.hero h1 { font-size: 3rem; margin-bottom: 20px; }
 .btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 14px 32px; background-color: var(--primary-color);
-    color: white; text-decoration: none; border-radius: 8px; 
-    font-weight: 600; font-size: 1rem; transition: var(--transition);
-    box-shadow: 0 4px 6px -1px rgba(0, 98, 255, 0.2);
-}
-.btn:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-/* 6. Value Prop / Benefits */
-.value-prop-section { padding: 100px 20px; background-color: #fcfcfd; }
-.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-.benefit-card { 
-    background: #fff; padding: 40px; border-radius: 16px; 
-    border: 1px solid #f0f0f0; transition: var(--transition);
-}
-.benefit-card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: var(--shadow-md); }
-
-/* 7. Services */
-#services { padding: 100px 5%; }
-.service-cards { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
-.card { 
-    background: #fff; border-radius: 12px; padding: 40px; flex: 1;
-    min-width: 300px; max-width: 400px; border: 1px solid #edf2f7;
-    box-shadow: var(--shadow-sm);
+    background: #007bff;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
 }
 
-/* 8. How It Works - Visual Timeline */
-#how-it-works { background-color: var(--secondary-color); padding: 100px 5%; }
-.steps { display: flex; justify-content: space-between; gap: 40px; }
-.step { flex: 1; text-align: center; position: relative; }
-.step-number { 
-    width: 50px; height: 50px; background: var(--primary-color); color: white;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px; font-weight: 700; font-size: 1.2rem;
+/* Services and Grid */
+.benefits-grid, .service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 0;
 }
-@media (min-width: 769px) {
-    .step:not(:last-child)::after {
-        content: ''; position: absolute; top: 25px; left: calc(50% + 40px);
-        width: calc(100% - 80px); height: 2px; background: #cbd5e0;
-    }
+.card, .benefit-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
 }
 
-/* 9. Why Choose Us - List Styling */
-#why-choose-us { padding: 100px 0; background-color: #fff; }
-.features-list { list-style: none; max-width: 800px; margin: 40px auto 0; padding: 0 20px; }
-.features-list li {
-    background: #f0f7ff; padding: 20px 25px; margin-bottom: 12px;
-    border-radius: 12px; display: flex; align-items: center;
-    font-weight: 500; transition: var(--transition);
-}
-.features-list li::before {
-    content: '✓'; margin-right: 15px; color: var(--primary-color); font-weight: 900;
-}
-.features-list li:hover { transform: scale(1.02); background: #e0efff; }
-
-/* 10. WhatsApp Floating Button */
+/* WhatsApp Floating Button */
 .whatsapp-float {
-    position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-    background-color: var(--wa-green); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; z-index: 1000;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1001;
 }
-.whatsapp-float:hover { transform: scale(1.1); }
-
-/* Footer */
-footer { background: #1a202c; color: #a0aec0; padding: 40px 0; text-align: center; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    h1 { font-size: 2.25rem; }
-    .nav-links { display: none; } /* Add a hamburger menu toggle via JS later */
-    .steps { flex-direction: column; gap: 60px; }
+.wa-modal {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    z-index: 1002;
+}
+.wa-modal-content { padding: 20px; }
+.wa-form input, .wa-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.wa-submit-btn {
+    width: 100%;
+    background: #25d366;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
 }
