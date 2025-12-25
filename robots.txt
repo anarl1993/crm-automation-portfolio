@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace the URL below if you change your repository name
+Sitemap: https://arlworkflowautomationsolutions.github.io/ARL-Workflow-Automation-Solutions/sitemap.xml
