@@ -188,7 +188,7 @@
                 <form id="wa-form">
                     <input type="text" id="wa-name" placeholder="Your Name" required>
                     <input type="email" id="wa-email" placeholder="Your Email" required>
-                    <input type="phone number" id="wa-email" placeholder="Phone Number" required>
+                    <input type="tel" id="wa-phone" placeholder="Phone Number" required>
                     <textarea id="wa-query" placeholder="How can I help you automate today?" required></textarea>
                     <button type="submit" class="wa-submit-btn">Start WhatsApp Chat</button>
                 </form>
@@ -217,34 +217,50 @@
         }
 
         document.getElementById('wa-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('wa-name').value;
-            const query = document.getElementById('wa-query').value;
-            const waNumber = "639495238819";
-            
-            // Build the message
-            const text = encodeURIComponent(`Hi Ana, I'm ${name}.\n\nI'm interested in: ${query}`);
-            
-            // Show thank you state
-            document.getElementById('wa-form-container').style.display = 'none';
-            document.getElementById('user-name-display').innerText = name;
-            document.getElementById('wa-thank-you').style.display = 'block';
+    e.preventDefault();
 
-            // Redirect after a short delay
-            setTimeout(() => {
-                window.open(`https://api.whatsapp.com/send?phone=${waNumber}&text=${text}`, '_blank');
-                
-                // Reset for next time
-                toggleWhatsAppModal();
-                setTimeout(() => {
-                    document.getElementById('wa-form-container').style.display = 'block';
-                    document.getElementById('wa-thank-you').style.display = 'none';
-                    document.getElementById('wa-form').reset();
-                }, 500);
-            }, 1500);
-        });
+    // 1. Get values from the form inputs
+    const name = document.getElementById('wa-name').value;
+    const email = document.getElementById('wa-email').value;
+    // Note: If you don't have a phone input in your HTML, add one with id="wa-phone"
+    const phone = document.getElementById('wa-phone') ? document.getElementById('wa-phone').value : "Not provided";
+    const query = document.getElementById('wa-query').value;
 
+    const waNumber = "639495238819";
+
+    // 2. Build the message with line breaks (\n) and bolding (*)
+    const rawMessage = `Hi, I'd like to inquire about your services.
+
+*Name:* ${name}
+*Email:* ${email}
+*Phone:* ${phone}
+*Query:* ${query}`;
+
+    // 3. Encode the message for a URL
+    const encodedMessage = encodeURIComponent(rawMessage);
+    
+    // 4. Create the final URL
+    const waURL = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
+
+    // 5. Visual Feedback (Thank you note)
+    document.getElementById('wa-form-container').style.display = 'none';
+    document.getElementById('user-name-display').innerText = name;
+    document.getElementById('wa-thank-you').style.display = 'block';
+
+    // 6. Open WhatsApp
+    setTimeout(() => {
+        window.open(waURL, '_blank');
+        toggleWhatsAppModal();
+        
+        // Reset the form for the next user
+        setTimeout(() => {
+            document.getElementById('wa-form-container').style.display = 'block';
+            document.getElementById('wa-thank-you').style.display = 'none';
+            document.getElementById('wa-form').reset();
+        }, 500);
+    }, 1500);
+});
+        
         // Close when clicking background
         window.onclick = function(event) {
             const modal = document.getElementById('wa-modal');
