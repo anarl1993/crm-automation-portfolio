@@ -200,75 +200,69 @@
         </div>
     </div>
 
-    <script>
-        function toggleWhatsAppModal() {
-            const modal = document.getElementById('wa-modal');
-            const badge = document.querySelector('.wa-badge');
-            
-            // Hide badge once clicked
-            if (badge) badge.style.display = 'none';
-
-            // Toggle visibility
-            if (modal.style.display === "none" || modal.style.display === "") {
-                modal.style.display = "flex";
-            } else {
-                modal.style.display = "none";
-            }
-        }
-
-        document.getElementById('wa-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // 1. Get values from the form inputs
-    const name = document.getElementById('wa-name').value;
-    const email = document.getElementById('wa-email').value;
-    // Note: If you don't have a phone input in your HTML, add one with id="wa-phone"
-    const phone = document.getElementById('wa-phone') ? document.getElementById('wa-phone').value : "Not provided";
-    const query = document.getElementById('wa-query').value;
-
-    const waNumber = "639495238819";
-
-    // 2. Build the message with line breaks (\n) and bolding (*)
-    const rawMessage = `Hi, I'd like to inquire about your services.
-
-*Name:* ${name}
-*Email:* ${email}
-*Phone:* ${phone}
-*Query:* ${query}`;
-
-    // 3. Encode the message for a URL
-    const encodedMessage = encodeURIComponent(rawMessage);
-    
-    // 4. Create the final URL
-    const waURL = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
-
-    // 5. Visual Feedback (Thank you note)
-    document.getElementById('wa-form-container').style.display = 'none';
-    document.getElementById('user-name-display').innerText = name;
-    document.getElementById('wa-thank-you').style.display = 'block';
-
-    // 6. Open WhatsApp
-    setTimeout(() => {
-        window.open(waURL, '_blank');
-        toggleWhatsAppModal();
+   <script>
+    function toggleWhatsAppModal() {
+        const modal = document.getElementById('wa-modal');
+        const badge = document.querySelector('.wa-badge');
         
-        // Reset the form for the next user
+        if (badge) badge.style.display = 'none';
+
+        if (modal.style.display === "none" || modal.style.display === "") {
+            modal.style.display = "flex";
+        } else {
+            modal.style.display = "none";
+        }
+    }
+
+    document.getElementById('wa-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // 1. Capture the values
+        const name = document.getElementById('wa-name').value;
+        const email = document.getElementById('wa-email').value;
+        const phone = document.getElementById('wa-phone').value;
+        const query = document.getElementById('wa-query').value;
+        const waNumber = "639495238819";
+
+        // 2. Build the message (Using simple strings for maximum compatibility)
+        // \n creates the line breaks you requested
+        const rawMessage = "Hi, I'd like to inquire about your services.\n\n" +
+                           "*Name:* " + name + "\n" +
+                           "*Email:* " + email + "\n" +
+                           "*Phone:* " + phone + "\n" +
+                           "*Query:* " + query;
+
+        // 3. Encode for URL
+        const encodedMessage = encodeURIComponent(rawMessage);
+        const waURL = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedMessage}`;
+
+        // 4. UI Feedback
+        document.getElementById('wa-form-container').style.display = 'none';
+        document.getElementById('user-name-display').innerText = name;
+        document.getElementById('wa-thank-you').style.display = 'block';
+
+        // 5. Redirect
         setTimeout(() => {
-            document.getElementById('wa-form-container').style.display = 'block';
-            document.getElementById('wa-thank-you').style.display = 'none';
-            document.getElementById('wa-form').reset();
-        }, 500);
-    }, 1500);
-});
-        
-        // Close when clicking background
-        window.onclick = function(event) {
-            const modal = document.getElementById('wa-modal');
-            if (event.target === modal) {
-                toggleWhatsAppModal();
-            }
+            window.open(waURL, '_blank');
+            toggleWhatsAppModal();
+            
+            // Reset form for next time
+            setTimeout(() => {
+                document.getElementById('wa-form-container').style.display = 'block';
+                document.getElementById('wa-thank-you').style.display = 'none';
+                document.getElementById('wa-form').reset();
+            }, 500);
+        }, 1500);
+    });
+
+    // Close when clicking outside the white box
+    window.onclick = function(event) {
+        const modal = document.getElementById('wa-modal');
+        if (event.target === modal) {
+            toggleWhatsAppModal();
         }
-    </script>
+    }
+</script>
     
 </body>
 </html>
